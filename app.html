@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loan Calculator — Professional UI</title>
+
+  <!-- CSS File -->
+  <link rel="stylesheet" href="style2.css" />
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- Left: Calculator -->
+    <section class="card">
+      <h1>Loan Calculator</h1>
+      <p class="lead">
+        Calculate monthly EMI, total payment and interest.
+        Clean, responsive and professional UI.
+      </p>
+
+      <form id="loanForm" onsubmit="return false;">
+
+        <div class="row">
+          <div class="field" style="flex:1">
+            <label for="principal">Loan Amount (₹)</label>
+            <input id="principal" type="number" value="500000" />
+          </div>
+          <div class="field" style="width:140px">
+            <label for="rate">Interest Rate (%)</label>
+            <input id="rate" type="number" value="7.5" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field" style="flex:1">
+            <label for="years">Loan Tenure (Years)</label>
+            <input id="years" type="number" value="10" />
+          </div>
+          <div class="field" style="width:140px">
+            <label for="frequency">Payment Frequency</label>
+            <select id="frequency">
+              <option value="12">Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="1">Yearly</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field" style="flex:1">
+            <label>Processing Fee</label>
+            <input id="procFee" type="number" value="0" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" id="calculateBtn">Calculate</button>
+          <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+        </div>
+
+        <div class="result">
+          <div class="stat">
+            <h3>EMI</h3>
+            <p id="emi">₹ 0</p>
+          </div>
+          <div class="stat">
+            <h3>Total Interest</h3>
+            <p id="totalInterest">₹ 0</p>
+          </div>
+          <div class="stat">
+            <h3>Total Payment</h3>
+            <p id="totalPayment">₹ 0</p>
+          </div>
+          <div class="stat">
+            <h3>Processing Fee</h3>
+            <p id="procAmount">₹ 0</p>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Right: Summary -->
+    <aside class="card summary">
+      <h2>Loan Summary</h2>
+      <p class="muted">Quick overview</p>
+
+      <div class="flex">
+        <div>
+          <div class="kpi-small">Principal</div>
+          <div id="sumPrincipal">₹ 500,000</div>
+        </div>
+        <div style="margin-left:auto">
+          <div class="kpi-small">Tenure</div>
+          <div id="sumTenure">10 yr</div>
+        </div>
+      </div>
+
+      <div class="amortization" id="amortization" hidden>
+        <table>
+          <thead>
+            <tr>
+              <th>Inst</th>
+              <th>Payment</th>
+              <th>Interest</th>
+              <th>Principal</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="amortBody"></tbody>
+        </table>
+      </div>
+
+      <div>
+        <input type="checkbox" id="showAmort" /> Show Amortization
+        <button class="btn-ghost" id="downloadCsv">Download CSV</button>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- JS File -->
+  <script src="script2.js"></script>
+</body>
+</html>
